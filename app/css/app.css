@@ -1,0 +1,41 @@
+/* app css stylesheet */
+
+body {
+  padding-top: 20px;
+}
+
+.list-group-item
+{
+width:50%;
+}
+
+.glyphicon-remove
+{
+position:absolute;
+right:10px;
+top:10px;
+}
+
+.item-label
+{
+width:50px;
+color:blue;
+}
+
+.new-item
+{
+position:relative;
+left:45px;
+width:50%;	
+}
+
+footer
+{
+position:absolute;
+bottom:10px;
+}
+
+li.true span.item-label{
+text-decoration: line-through;
+color:gray;
+}

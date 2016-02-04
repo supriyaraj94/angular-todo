@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+    </script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+    </script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+  </head>
+  <body ng-controller="todoListCtrl">
+    <div class="container">
+      <div class="jumbotron">
+        <h1>TODOS</h1>
+      </div>
+    <input type="text" placeholder="Add your next TODO item here..." class="new-item"ng-model="currentItem" ng-keyup="changeItem($event)"></input><br><br>
+    <ul>
+      <li ng-repeat="item in items | filter : select" class="list-group-item {{item.status}}">
+
+        <input type="checkbox" ng-model="item.status">
+      <span class="item-label" ng-hide="editedItem==item" ng-dblclick="editItem($event,item)">{{item.name}}        </span>
+        <input ng-show="editedItem==item" show-focus="editedItem==item" ng-model="item.name" ng-blur="saveEdits(item)"/>
+      <button class="glyphicon glyphicon-remove" ng-click="removeItem(item)"></button>
+      </li>
+    </ul>
+    <footer>
+    <ul class="nav nav-pills">
+      <li class="active"><a data-toggle="pill" ng-click="select=''">All</a></li>
+      <li><a data-toggle="pill" ng-click="select='false'">Active</a></li>
+      <li><a data-toggle="pill" ng-click="select='true'">Completed</a></li>
+    </ul>
+
+    <h6>{{remainingCount}} <ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }">items left</ng-pluralize>
+    </h6>  
+    </footer>
+  </body>
+</html>
